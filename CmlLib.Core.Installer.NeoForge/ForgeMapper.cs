@@ -36,7 +36,7 @@ public class ForgeMapper
                 extension = innerStr[1];
 
             return Path.Combine(prepath,
-                PackageName.Parse(pathName).GetPath(null, extension, Path.DirectorySeparatorChar));
+                PackageName.Parse(pathName).GetPath(null, extension));
         }
         else if (str.StartsWith("\'") && str.EndsWith("\'"))
             return str.Trim('\'');

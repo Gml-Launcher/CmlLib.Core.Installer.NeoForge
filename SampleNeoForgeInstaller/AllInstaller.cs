@@ -85,7 +85,7 @@ internal class AllInstaller
     public async Task InstallAndLaunch(string mcVersion)
     {
         Console.WriteLine("Minecraft: " + mcVersion);
-        var versionName = await _neoForge.Install(mcVersion, new ForgeInstallOptions
+        var versionName = await _neoForge.Install(mcVersion, new NeoForgeInstallOptions
         {
             FileProgress = new SyncProgress<InstallerProgressChangedEventArgs>(fileChanged),
             ByteProgress = new SyncProgress<ByteProgress>(progressChanged),
