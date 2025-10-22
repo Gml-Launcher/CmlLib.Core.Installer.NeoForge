@@ -164,6 +164,8 @@ public class NeoForgeInstallProcessor
                 var libNameString = libName.GetString();
                 if (string.IsNullOrEmpty(libNameString))
                     continue;
+                
+                libNameString = libNameString.Replace("@jar", string.Empty);
 
                 var lib = Path.Combine(libraryPath, NeoForgePackageName.GetPath(libNameString, Path.DirectorySeparatorChar));
                 classpath.Add(lib);
