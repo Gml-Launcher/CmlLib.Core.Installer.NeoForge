@@ -6,9 +6,9 @@ using CmlLib.Core.Installers;
 using CmlLib.Core.ProcessBuilder;
 using SampleForgeInstaller;
 
-var tester = new AllInstaller();
-await tester.InstallAll();
-return;
+// var tester = new AllInstaller();
+// await tester.InstallAll();
+// return;
 
 var path = new MinecraftPath(); // use default directory
 var launcher = new MinecraftLauncher(path);
