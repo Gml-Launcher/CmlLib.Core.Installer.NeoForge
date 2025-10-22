@@ -6,7 +6,6 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <RootNamespace>CmlLib.Core.Installer.Forge</RootNamespace>
     </PropertyGroup>
     
     <PropertyGroup>

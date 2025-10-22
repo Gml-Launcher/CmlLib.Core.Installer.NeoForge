@@ -1,4 +1,6 @@
-﻿public class NeoForgeVersionFile
+﻿namespace CmlLib.Core.Installer.NeoForge.Versions;
+
+public class NeoForgeVersionFile
 {
     public string? MD5 { get; set; }
     public string? SHA1 { get; set; }

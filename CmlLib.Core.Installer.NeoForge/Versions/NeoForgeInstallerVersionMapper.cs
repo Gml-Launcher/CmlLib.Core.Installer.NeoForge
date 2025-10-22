@@ -1,6 +1,6 @@
-﻿using CmlLib.Core.Installer.Forge.Installers;
+﻿using CmlLib.Core.Installer.NeoForge.Installers;
 
-namespace CmlLib.Core.Installer.Forge.Versions;
+namespace CmlLib.Core.Installer.NeoForge.Versions;
 
 public class NeoForgeInstallerVersionMapper : IForgeInstallerVersionMapper
 {

@@ -1,13 +1,14 @@
-﻿using CmlLib.Core.Installer.Forge;
-using CmlLib.Core;
+﻿using CmlLib.Core;
 using CmlLib.Core.Auth;
+using CmlLib.Core.Installer.NeoForge;
+using CmlLib.Core.Installer.NeoForge.Installers;
 using CmlLib.Core.Installers;
 using CmlLib.Core.ProcessBuilder;
 using SampleForgeInstaller;
 
-// var tester = new AllInstaller();
-// await tester.InstallAll();
-// return;
+var tester = new AllInstaller();
+await tester.InstallAll();
+return;
 
 var path = new MinecraftPath(); // use default directory
 var launcher = new MinecraftLauncher(path);
@@ -21,8 +22,8 @@ var installerOutput = new SyncProgress<string>(e =>
     Console.WriteLine(e));
 
 //Initialize variables with the Minecraft version and the Forge version
-var mcVersion = "1.21";
-var forgeVersion = "21.0.24-beta";
+var mcVersion = "1.21.10";
+var forgeVersion = "21.10.2-beta";
 
 //Initialize MForge
 var forge = new NeoForgeInstaller(launcher);

@@ -1,11 +1,11 @@
-﻿using CmlLib.Core.FileExtractors;
+﻿using System.Text.Json;
+using CmlLib.Core.FileExtractors;
 using CmlLib.Core.Files;
 using CmlLib.Core.Installers;
 using CmlLib.Core.Rules;
 using CmlLib.Core.Version;
-using System.Text.Json;
 
-namespace CmlLib.Core.Installer.Forge.Installers;
+namespace CmlLib.Core.Installer.NeoForge.Installers;
 
 public class NeoForgeLibraryInstaller
 {

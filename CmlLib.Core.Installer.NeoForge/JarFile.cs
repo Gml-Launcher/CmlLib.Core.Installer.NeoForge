@@ -1,7 +1,7 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
-using System.Text;
+﻿using System.Text;
+using ICSharpCode.SharpZipLib.Zip;
 
-namespace CmlLib.Core.Installer.Forge;
+namespace CmlLib.Core.Installer.NeoForge;
 
 internal class JarFile
 {

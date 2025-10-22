@@ -1,11 +1,10 @@
-﻿using CmlLib.Core.Installers;
-using CmlLib.Core.ProcessBuilder;
-using CmlLib.Utils;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
+using CmlLib.Core.Installers;
+using CmlLib.Core.ProcessBuilder;
 
-namespace CmlLib.Core.Installer.Forge;
+namespace CmlLib.Core.Installer.NeoForge.Installers;
 
 public class NeoForgeInstallProcessor
 {
@@ -48,7 +47,7 @@ public class NeoForgeInstallProcessor
             if (string.IsNullOrEmpty(value))
                 continue;
 
-            var fullPath = ForgeMapper.ToFullPath(value, libraryPath);
+            var fullPath = ForgeMapper.ToFullPath(value, libraryPath, Path.DirectorySeparatorChar);
             if (fullPath == value)
             {
                 value = value.Trim('/');
@@ -145,8 +144,7 @@ public class NeoForgeInstallProcessor
             return;
 
         // jar
-        var jar = PackageName.Parse(name);
-        var jarPath = Path.Combine(libraryPath, jar.GetPath(name, Path.DirectorySeparatorChar));
+        var jarPath = Path.Combine(libraryPath, NeoForgePackageName.GetPath(name, Path.DirectorySeparatorChar));
         var jarFile = new JarFile(jarPath);
         var jarManifest = jarFile.GetManifest();
 
@@ -167,10 +165,7 @@ public class NeoForgeInstallProcessor
                 if (string.IsNullOrEmpty(libNameString))
                     continue;
 
-                libNameString = libNameString.Replace("@jar", string.Empty);
-
-                var lib = Path.Combine(libraryPath,
-                    PackageName.Parse(libNameString).GetPath(name, Path.DirectorySeparatorChar));
+                var lib = Path.Combine(libraryPath, NeoForgePackageName.GetPath(libNameString, Path.DirectorySeparatorChar));
                 classpath.Add(lib);
             }
         }
@@ -182,7 +177,7 @@ public class NeoForgeInstallProcessor
             argsProp.ValueKind == JsonValueKind.Array)
         {
             var arrStrs = argsProp.EnumerateArray().Select(x => x.ToString());
-            args = ForgeMapper.Map(arrStrs, mapData, libraryPath);
+            args = ForgeMapper.Map(arrStrs, mapData, libraryPath, Path.DirectorySeparatorChar);
         }
 
         await startJava(classpath, mainClass, args, processorOutput);
@@ -213,10 +208,7 @@ public class NeoForgeInstallProcessor
         };
 
         var p = new ProcessWrapper(process);
-        p.OutputReceived += (s, e) =>
-        {
-            javaOutput?.Report(e);
-        };
+        p.OutputReceived += (s, e) => javaOutput?.Report(e);
         p.StartWithEvents();
         await p.WaitForExitTaskAsync();
     }

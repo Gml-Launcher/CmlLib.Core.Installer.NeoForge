@@ -1,4 +1,4 @@
-﻿namespace CmlLib.Core.Installer.Forge.Versions;
+﻿namespace CmlLib.Core.Installer.NeoForge.Versions;
 
 public class NeoForgeVersion
 {

@@ -1,9 +1,9 @@
 ﻿using CmlLib.Core.Files;
-using CmlLib.Core.Installer.Forge.Versions;
+using CmlLib.Core.Installer.NeoForge.Versions;
 using CmlLib.Core.Installers;
 using ICSharpCode.SharpZipLib.Zip;
 
-namespace CmlLib.Core.Installer.Forge.Installers;
+namespace CmlLib.Core.Installer.NeoForge.Installers;
 
 public class NeoForgeInstallerExtractor : IDisposable
 {

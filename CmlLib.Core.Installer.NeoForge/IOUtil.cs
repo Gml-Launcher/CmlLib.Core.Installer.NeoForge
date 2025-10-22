@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace CmlLib.Utils;
+﻿namespace CmlLib.Core.Installer.NeoForge;
 
 internal static class IOUtil
 {

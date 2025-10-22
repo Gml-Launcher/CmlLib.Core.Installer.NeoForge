@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace CmlLib.Core.Installer.Forge;
+namespace CmlLib.Core.Installer.NeoForge;
 
 internal static class JsonUtil
 {

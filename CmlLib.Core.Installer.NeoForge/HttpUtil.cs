@@ -1,4 +1,4 @@
-﻿namespace CmlLib.Core.Installer.Forge;
+﻿namespace CmlLib.Core.Installer.NeoForge;
 
 internal class HttpUtil
 {

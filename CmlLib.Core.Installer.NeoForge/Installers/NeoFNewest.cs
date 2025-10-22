@@ -1,12 +1,11 @@
-﻿using CmlLib.Core.Installer.Forge.Versions;
-using CmlLib.Core.Installers;
-using CmlLib.Utils;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Nodes;
+using CmlLib.Core.Installer.NeoForge.Versions;
+using CmlLib.Core.Installers;
 
-namespace CmlLib.Core.Installer.Forge.Installers;
+namespace CmlLib.Core.Installer.NeoForge.Installers;
 
-/* 1.12.2 - 1.20.* */
+/* 1.20.2 - 1.21.* */
 public class NeoFNewest : IForgeInstaller
 {
     public NeoFNewest(string versionName, NeoForgeVersion neoForgeVersion)

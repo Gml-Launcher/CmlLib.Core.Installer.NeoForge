@@ -1,8 +1,7 @@
-﻿using System.Text.Json.Serialization;
-using CmlLib.Core.Installer.Forge.Models;
+﻿using CmlLib.Core.Installer.NeoForge.Models;
 using HtmlAgilityPack;
 
-namespace CmlLib.Core.Installer.Forge.Versions;
+namespace CmlLib.Core.Installer.NeoForge.Versions;
 
 public class NeoForgeVersionLoader
 {

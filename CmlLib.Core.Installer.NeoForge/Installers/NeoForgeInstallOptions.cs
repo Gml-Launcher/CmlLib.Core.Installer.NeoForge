@@ -1,7 +1,7 @@
 using CmlLib.Core.Installers;
 using CmlLib.Core.Rules;
 
-namespace CmlLib.Core.Installer.Forge;
+namespace CmlLib.Core.Installer.NeoForge.Installers;
 
 public class NeoForgeInstallOptions
 {

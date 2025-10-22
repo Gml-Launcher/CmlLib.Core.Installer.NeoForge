@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace CmlLib.Core.Installer.Forge.Models;
+namespace CmlLib.Core.Installer.NeoForge.Models;
 
 internal class NeoForgeManifest
 {
