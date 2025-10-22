@@ -146,7 +146,7 @@ public class NeoForgeInstallProcessor
 
         // jar
         var jar = PackageName.Parse(name);
-        var jarPath = Path.Combine(libraryPath, jar.GetPath());
+        var jarPath = Path.Combine(libraryPath, jar.GetPath(name, Path.DirectorySeparatorChar));
         var jarFile = new JarFile(jarPath);
         var jarManifest = jarFile.GetManifest();
 
@@ -170,7 +170,7 @@ public class NeoForgeInstallProcessor
                 libNameString = libNameString.Replace("@jar", string.Empty);
 
                 var lib = Path.Combine(libraryPath,
-                    PackageName.Parse(libNameString).GetPath());
+                    PackageName.Parse(libNameString).GetPath(name, Path.DirectorySeparatorChar));
                 classpath.Add(lib);
             }
         }

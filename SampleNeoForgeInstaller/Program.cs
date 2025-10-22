@@ -27,7 +27,7 @@ var forgeVersion = "21.0.24-beta";
 //Initialize MForge
 var forge = new NeoForgeInstaller(launcher);
 
-var version_name = await forge.Install(mcVersion, forgeVersion, new ForgeInstallOptions
+var version_name = await forge.Install(mcVersion, forgeVersion, new NeoForgeInstallOptions
 {
     FileProgress = fileProgress,
     ByteProgress = byteProgress,
