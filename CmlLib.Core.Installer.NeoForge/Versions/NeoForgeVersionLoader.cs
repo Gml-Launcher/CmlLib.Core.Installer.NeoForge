@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using CmlLib.Core.Installer.NeoForge.Models;
+﻿using CmlLib.Core.Installer.NeoForge.Models;
 using HtmlAgilityPack;
 
 namespace CmlLib.Core.Installer.NeoForge.Versions;
