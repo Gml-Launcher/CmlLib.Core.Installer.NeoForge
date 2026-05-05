@@ -17,20 +17,33 @@ public class NeoForgeVersionLoader
 
     public async Task<IEnumerable<NeoForgeVersion>> GetNeoForgeVersions(string mcVersion)
     {
-        var manifestVersion = mcVersion.Substring(2);
-        
-        var stream = await _httpClient.GetStreamAsync(_forgeVersionManifest);
+        var requested = NormalizeMcVersion(mcVersion);
 
-        var manifest = await System.Text.Json.JsonSerializer.DeserializeAsync<NeoForgeManifest>(stream);
-        
-        if (manifest == null)
+        var stream = await _httpClient.GetStreamAsync(_forgeVersionManifest);
+        var manifest = await JsonSerializer.DeserializeAsync<NeoForgeManifest>(stream);
+
+        if (manifest?.Versions == null)
             return Array.Empty<NeoForgeVersion>();
 
-        var currentGameVersions = manifest.Versions.Where(c => c.StartsWith(manifestVersion));
-        
-        return currentGameVersions.Select(version => new NeoForgeVersion(mcVersion, version));
+        return manifest.Versions
+            .Where(v => IsVersionFamilyMatch(v, requested))
+            .Select(v => new NeoForgeVersion(mcVersion, v));
     }
     
+    private static string NormalizeMcVersion(string mcVersion)
+    {
+        // supports old "1.xx" format and future/plain "26.1" style inputs
+        return mcVersion.StartsWith("1.", StringComparison.Ordinal)
+            ? mcVersion[2..]
+            : mcVersion;
+    }
+
+    private static bool IsVersionFamilyMatch(string version, string family)
+    {
+        return version.Equals(family, StringComparison.OrdinalIgnoreCase)
+            || version.StartsWith(family + ".", StringComparison.OrdinalIgnoreCase)
+            || version.StartsWith(family + "-", StringComparison.OrdinalIgnoreCase);
+    }
     private IEnumerable<NeoForgeVersionFile> getForgeVersionFiles(HtmlNode node)
     {
         var lis = node.SelectNodes("ul[1]/li");
