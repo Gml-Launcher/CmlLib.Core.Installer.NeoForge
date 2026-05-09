@@ -48,10 +48,10 @@ internal class AllInstaller
             }
             catch(Exception ex)
             {
-                throw;
                 Console.WriteLine(ex.ToString());
                 Console.ReadLine();
                 Console.ReadLine();
+                throw;
             }
         }
     }
