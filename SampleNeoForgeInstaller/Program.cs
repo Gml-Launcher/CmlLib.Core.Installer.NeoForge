@@ -18,24 +18,21 @@ var fileProgress = new SyncProgress<InstallerProgressChangedEventArgs>(e =>
     Console.WriteLine($"[{e.EventType}][{e.ProgressedTasks}/{e.TotalTasks}] {e.Name}"));
 var byteProgress = new SyncProgress<ByteProgress>(e =>
     Console.WriteLine(e.ToRatio() * 100 + "%"));
-var installerOutput = new SyncProgress<string>(e =>
-    Console.WriteLine(e));
+var installerOutput = new SyncProgress<string>(Console.WriteLine);
 
 //Initialize variables with the Minecraft version and the Forge version
-var mcVersion = "1.21.10";
-var forgeVersion = "21.10.2-beta";
+var mcVersion = "26.1.2";
+var neoForgeVersion = "26.1.2.43-beta";
 
-//Initialize MForge
+//Initialize NeoForge
 var forge = new NeoForgeInstaller(launcher);
 
-var version_name = await forge.Install(mcVersion, forgeVersion, new NeoForgeInstallOptions
+var versionName = await forge.Install(mcVersion, neoForgeVersion, new NeoForgeInstallOptions
 {
     FileProgress = fileProgress,
     ByteProgress = byteProgress,
     InstallerOutput = installerOutput,
 });
-//var version_name = await forge.Install(mcVersion); // install the recommended forge version for mcVersion
-//OR var version_name = forge.Install(mcVersion, forgeVersion).GetAwaiter().GetResult();
 
 //Start Minecraft
 var launchOption = new MLaunchOption
@@ -44,10 +41,7 @@ var launchOption = new MLaunchOption
     Session = MSession.CreateOfflineSession("TaiogStudio"),
 };
 
-var process = await launcher.CreateProcessAsync(version_name, launchOption);
-
-// process.Start();
-
+var process = await launcher.CreateProcessAsync(versionName, launchOption);
 
 // print game logs
 var processUtil = new ProcessWrapper(process);
