@@ -1,3 +1,4 @@
+# Minor/patch updates are auto-merged by .github/workflows/dependabot-auto-merge.yml; major updates stay as PRs for review.
 version: 2
 updates:
   - package-ecosystem: "nuget"
